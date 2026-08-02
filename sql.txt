@@ -1,0 +1,15 @@
+CREATE TABLE articles (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL
+);
+
+INSERT INTO articles (title, author, content)
+
+VALUES (
+    'Why We Dream',
+    'Berry',
+    'Who knows why we dream ig its unfinished thoughts'
+);
+
