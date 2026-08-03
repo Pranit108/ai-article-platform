@@ -16,8 +16,8 @@ Base.metadata.create_all(bind=engine)
 # Only the local frontend dev server is allowed to call this API right now.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000","ai-article-platform.vercel.app"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
