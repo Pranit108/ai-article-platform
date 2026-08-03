@@ -52,12 +52,12 @@ type Article = {
   author: string;
   content: string;
 };
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 export default function Home() {
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/articles")
+    fetch(`${API_URL}/articles`)
       .then((res) => res.json())
       .then((data) => setArticles(data));
   }, []);

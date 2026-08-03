@@ -9,11 +9,11 @@ export default function NewArticle() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
-
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    await fetch("http://localhost:8000/articles", {
+    await fetch(`${API_URL}/articles`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

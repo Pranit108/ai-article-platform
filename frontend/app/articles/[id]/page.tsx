@@ -76,14 +76,15 @@ type Props = {
   }>;
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL!;
 export default async function ArticlePage({ params }: Props) {
   const { id } = await params;
 
   const [articleRes, conceptsRes] = await Promise.all([
-    fetch(`http://localhost:8000/articles/${id}`, {
+    fetch(`${API_URL}/articles/${id}`, {
       cache: "no-store",
     }),
-    fetch(`http://localhost:8000/articles/${id}/concepts`, {
+    fetch(`${API_URL}/articles/${id}/concepts`, {
       cache: "no-store",
     }),
   ]);
