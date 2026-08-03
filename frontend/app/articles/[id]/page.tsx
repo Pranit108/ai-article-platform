@@ -69,7 +69,7 @@
 //     </main>
 //   );
 // }
-
+import ClickableArticle from "@/components/ClickableArticle";
 type Props = {
   params: Promise<{
     id: string;
@@ -96,17 +96,17 @@ export default async function ArticlePage({ params }: Props) {
   const concepts = await conceptsRes.json();
 
   return (
-    <main className="max-w-7xl mx-auto p-8">
-      <h1 className="text-5xl font-bold">{article.title}</h1>
+    <main className="max-w-7xl mx-auto mt-10 p-8">
+      <h1 className="text-5xl font-bold tracking-tight">{article.title}</h1>
 
-      <p className="text-gray-500 mt-2">{article.author}</p>
+      <p className="text-sm text-stone-500 italic">{article.author}</p>
 
       <div className="grid grid-cols-[2fr_1fr] gap-12 mt-8">
-        <article className="whitespace-pre-wrap text-lg leading-9">
-          {article.content}
-        </article>
-
-        <aside>
+        <ClickableArticle
+        content={article.content}
+        concepts={concepts}
+      />
+        {/* <aside>
           <h2 className="text-2xl font-bold mb-4">📚 Concepts</h2>
 
           <div className="space-y-3">
@@ -119,6 +119,17 @@ export default async function ArticlePage({ params }: Props) {
               </div>
             ))}
           </div>
+        </aside> */}
+        <aside className="sticky top-24">
+        <div className="rounded-xl border bg-blue-50 p-5">
+          <h3 className="font-semibold mb-2">
+            💡 Interactive Article
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            Click any highlighted concept in the article to learn more.
+          </p>
+        </div>
         </aside>
       </div>
     </main>
